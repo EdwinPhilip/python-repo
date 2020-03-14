@@ -3,7 +3,23 @@ node {
         stage('Checkout') {
             checkout scm
         }
-        stage('Docker-build-push'){
+        stage('Build') {
+            sh '''
+                pipenv install
+                '''
+        }
+        try{
+        stage('Test') {
+            sh 'pipenv run py.test --verbose --junit-xml test-reports/results.xml'
+        }
+        }
+        catch(e){
+            throw e
+        }
+        finally {
+                junit allowEmptyResults: true, testResults: 'test-reports/results.xml', fingerprint: true
+        }
+        stage('Docker-build'){
 
             docker.withRegistry('', 'dockerhub') {
 

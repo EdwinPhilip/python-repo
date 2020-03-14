@@ -1,7 +1,12 @@
 # trg-solution
 
+### Prerequisites
+* ansible >=2
+* docker >=18.05
+* python >=3.7
+
  - **What principles did you apply?**
-     + Scripted Jenkinsfile
+     + Pipeline scipt from SCM - Scripted Jenkinsfile
      + Separate Dockerfiles for python app and nginx
      + NGINX SSL reverse proxy
      + python Hello world app not exposed and available only through nginx as reverse proxy
