@@ -5,6 +5,8 @@
 * docker >=18.05
 * python >=3.7
 
+### Narrative
+
  - **What principles did you apply?**
      + Pipeline scipt from SCM - Scripted Jenkinsfile
      + Separate Dockerfiles for python app and nginx
