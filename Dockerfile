@@ -7,4 +7,4 @@ COPY . /app
 
 RUN pipenv install --deploy
 
-CMD pipenv run python hello-world.py
+CMD pipenv run python hello_world.py

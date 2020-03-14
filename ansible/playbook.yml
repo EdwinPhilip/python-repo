@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Run python Hello-World
+      docker_container:
+        name: pyhello
+        image: ephilipdoc/pyhello:latest
+    - name: nginx
+      docker_container:
+        name: nginx
+        image: ephilipdoc/customnginx:latest
+        ports: 
+           - "80:80"
+           - "443:443"
+        links:
+          - pyhello
+    - name: create network and connect containers
+      docker_network:
+        name: hello
+        connected:
+          - pyhello
+          - nginx
